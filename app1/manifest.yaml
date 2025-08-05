@@ -10,7 +10,8 @@ metadata:
 spec: 
    replicas: 2 
    # these are the labels replica set use to create pod replicas, this should match pod labels 
-   selector: 
+   selector:
+      matchLabels: 
         purpose: ingress
         project: roboshop 
         app: app1 
@@ -41,7 +42,7 @@ spec:
        app: app1 
    ports: 
    - protocol: TCP 
-     ports: 80 # service port 
+     port: 80 # service port 
      targetPort: 80 # container port 
 --- 
 apiVersion: networking.k8s.io/v1 
