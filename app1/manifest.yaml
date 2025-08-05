@@ -1,0 +1,68 @@
+apiVersion: apps/v1
+kind: Deployment 
+metadata: 
+     name: app1
+     # deployment labels 
+     labels: 
+        purpose: ingress
+        project: roboshop 
+        app: app1 
+spec: 
+   replicas: 2 
+   # these are the labels replica set use to create pod replicas, this should match pod labels 
+   selector: 
+        purpose: ingress
+        project: roboshop 
+        app: app1 
+   # this is pod definition 
+   template: 
+       metadata: 
+            labels: 
+                purpose: ingress   
+                project: roboshop 
+                app: app1 
+       spec: 
+          containers: 
+          - name: nginx 
+            image: subbu2/app1:v1 
+--- 
+apiVersion: v1 
+kind: Service 
+metadata: 
+      name: app1 
+      labels: 
+          purpose: ingress 
+          project: roboshop 
+          app: app1 
+spec: 
+   selector: 
+       purpose: ingress 
+       project: roboshop
+       app: app1 
+   ports: 
+   - protocol: TCP 
+     ports: 80 # service port 
+     targetPort: 80 # container port 
+--- 
+apiVersion: networking.k8s.io/v1 
+kind: Ingress 
+metadata: 
+     name: app1 
+     annotations: 
+        alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]' 
+        alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:888947293288:certificate/b089dff3-cb8c-4e86-a3ae-28f103b18b14                                                   
+        alb.ingress.kubernetes.io/scheme: internet-facing 
+        alb.ingress.kubernetes.io/target-port: ip 
+spec: 
+   ingressClassName: alb 
+   rules: 
+   - host: "app1.subbuaws.site" 
+     http:
+       paths: 
+       - pathType: Prefix 
+         path: "/" 
+         backend:  
+             service: 
+                 name: app1 
+                 port: 
+                   number: 80 # app1 service port         
