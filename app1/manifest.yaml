@@ -25,13 +25,13 @@ spec:
     spec:
       containers:
       - name: app1
-        image: joindevops/app1:v1
+        image: subbu2/app1:v1
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: app1
-  labels:
+  labels: 
     purpose: ingress
     project: roboshop
     app: app1
@@ -51,10 +51,10 @@ metadata:
   name: app1
   annotations:
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
-    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:888947293288:certificate/17d433ec-aefe-4d0d-8d83-fd27b5157ebb
+    alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:888947293288:certificate/c9c99f4d-eaaa-482d-8604-6ea5ef9f28d8
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
-    alb.ingress.kubernetes.io/group.name: joindevops
+    alb.ingress.kubernetes.io/group.name: subbu2
 spec:
   ingressClassName: alb
   rules:
