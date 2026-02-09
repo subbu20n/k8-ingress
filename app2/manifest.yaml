@@ -53,11 +53,11 @@ metadata:
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTPS": 443}]'
     alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:888947293288:certificate/c9c99f4d-eaaa-482d-8604-6ea5ef9f28d8
     alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/target-type: ip 
     alb.ingress.kubernetes.io/group.name: subbu2
 spec:
   ingressClassName: alb
-  rules:
+  rules: 
   - host: "app2.subbuaws.site"
     http:
       paths:
@@ -68,3 +68,5 @@ spec:
             name: app2
             port:
               number: 80 # app2 service port
+
+
