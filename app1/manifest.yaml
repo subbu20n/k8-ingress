@@ -17,7 +17,7 @@ spec:
       app: app1
   # This is pod definition
   template:
-    metadata:
+    metadata:  
       labels:
         purpose: ingress
         project: roboshop
