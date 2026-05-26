@@ -20,7 +20,7 @@ spec:
     metadata:  
       labels:
         purpose: ingress
-        project: roboshop
+        project: roboshop 
         app: app1
     spec:
       containers:
