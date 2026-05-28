@@ -12,8 +12,8 @@ spec:
   # These are the labels replica set use to create pod replicas, this should match pod labels
   selector:
     matchLabels:
-      purpose: ingress
-      project: roboshop
+      purpose: ingress    
+      project: roboshop   
       app: app2
   # This is pod definition
   template:
@@ -25,7 +25,7 @@ spec:
     spec:
       containers:
       - name: app2
-        image: subbu2/app2:v1
+        image: subbu2/app2:v1    
 ---
 apiVersion: v1
 kind: Service
