@@ -12,7 +12,7 @@ spec:
   # These are the labels replica set use to create pod replicas, this should match pod labels
   selector:
     matchLabels:
-      purpose: ingress    
+      purpose: ingress       
       project: roboshop   
       app: app2
   # This is pod definition
